@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
@@ -31,23 +32,18 @@ public class Credit implements Serializable {
 	@Id
 	@GeneratedValue
 	private Integer id;
-
 	@JsonProperty("name")
 	private String name;
-
 	@JsonProperty("creditAmount")
 	private BigDecimal creditAmount;
-
 	@JsonProperty("createTime")
 	private Date createTime;
-
 	@JsonProperty("effectedTime")
 	private Date effectedTime;
-
 	@JsonProperty("endTime")
 	private Date endTime;
-
 	@ManyToOne(cascade={CascadeType.MERGE})
+	@JsonIgnore
 	@JoinColumn(name="user_id")
 	private User user;
 

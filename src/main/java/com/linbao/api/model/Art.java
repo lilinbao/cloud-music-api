@@ -2,8 +2,8 @@
 package com.linbao.api.model;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.Generated;
 import javax.persistence.Entity;
@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
@@ -19,9 +20,9 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 @Generated("org.jsonschema2pojo")
 @JsonPropertyOrder({ "id", "name", "sex", "type", "birthday", "company" })
-@Table(name="tb_art")
+@Table(name = "tb_art")
 @Entity
-public class Art implements Serializable{
+public class Art implements Serializable {
 
 	private static final long serialVersionUID = -186317883947101901L;
 
@@ -29,29 +30,22 @@ public class Art implements Serializable{
 	@Id
 	@GeneratedValue
 	private Integer id;
-	
 	@JsonProperty("name")
 	private String name;
-	
 	@JsonProperty("sex")
 	private String sex;
-	
 	@JsonProperty("type")
 	private String type;
-	
 	@JsonProperty("birthday")
 	private String birthday;
-	
 	@JsonProperty("company")
 	private String company;
-	
-	@OneToMany(mappedBy="art")
-	private Set<Music> musics = new HashSet<Music>(0);
-	
+	@OneToMany(mappedBy = "art")
+	@JsonIgnore
+	private List<Music> musics = new ArrayList<Music>(0);
+
 	/**
-	 * 
 	 * (Required)
-	 * 
 	 * @return The id
 	 */
 	@JsonProperty("id")
@@ -60,9 +54,7 @@ public class Art implements Serializable{
 	}
 
 	/**
-	 * 
 	 * (Required)
-	 * 
 	 * @param id
 	 *            The id
 	 */
@@ -77,9 +69,7 @@ public class Art implements Serializable{
 	}
 
 	/**
-	 * 
 	 * (Required)
-	 * 
 	 * @return The name
 	 */
 	@JsonProperty("name")
@@ -88,9 +78,7 @@ public class Art implements Serializable{
 	}
 
 	/**
-	 * 
 	 * (Required)
-	 * 
 	 * @param name
 	 *            The name
 	 */
@@ -105,7 +93,6 @@ public class Art implements Serializable{
 	}
 
 	/**
-	 * 
 	 * @return The sex
 	 */
 	@JsonProperty("sex")
@@ -114,7 +101,6 @@ public class Art implements Serializable{
 	}
 
 	/**
-	 * 
 	 * @param sex
 	 *            The sex
 	 */
@@ -129,7 +115,6 @@ public class Art implements Serializable{
 	}
 
 	/**
-	 * 
 	 * @return The type
 	 */
 	@JsonProperty("type")
@@ -138,7 +123,6 @@ public class Art implements Serializable{
 	}
 
 	/**
-	 * 
 	 * @param type
 	 *            The type
 	 */
@@ -153,7 +137,6 @@ public class Art implements Serializable{
 	}
 
 	/**
-	 * 
 	 * @return The birthday
 	 */
 	@JsonProperty("birthday")
@@ -162,7 +145,6 @@ public class Art implements Serializable{
 	}
 
 	/**
-	 * 
 	 * @param birthday
 	 *            The birthday
 	 */
@@ -177,7 +159,6 @@ public class Art implements Serializable{
 	}
 
 	/**
-	 * 
 	 * @return The company
 	 */
 	@JsonProperty("company")
@@ -186,7 +167,6 @@ public class Art implements Serializable{
 	}
 
 	/**
-	 * 
 	 * @param company
 	 *            The company
 	 */
@@ -200,12 +180,20 @@ public class Art implements Serializable{
 		return this;
 	}
 
-	public Set<Music> getMusics() {
+	/**
+	 * @return List<Music>
+	 */
+	@JsonProperty("musics")
+	@JsonIgnore
+	public List<Music> getMusics() {
 		return musics;
 	}
 
-	public void setMusics(Set<Music> musics) {
+	/**
+	 * @param musics
+	 *            void
+	 */
+	public void setMusics(List<Music> musics) {
 		this.musics = musics;
 	}
-
 }

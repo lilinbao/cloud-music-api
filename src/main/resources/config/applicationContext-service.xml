@@ -13,10 +13,10 @@
        	   http://www.springframework.org/schema/aop 
        	   http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
     
-    <bean id="userService" class="com.linbao.service.impl.UserServiceImpl">
+    <bean id="userService" class="com.linbao.api.service.impl.UserServiceImpl">
     	<property name="userDao" ref="userDao"></property>
     </bean>
-    <bean id="musicService" class="com.linbao.service.impl.MusicServiceImpl">
+    <bean id="musicService" class="com.linbao.api.service.impl.MusicServiceImpl">
     	<property name="musicDao" ref="musicDao"></property>
     </bean>
    

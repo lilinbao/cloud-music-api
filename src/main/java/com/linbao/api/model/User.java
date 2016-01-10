@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
@@ -36,27 +37,22 @@ public class User implements Serializable{
 	@GeneratedValue
 	@JsonProperty("id")
 	private Integer id;
-	
 	@JsonProperty("username")
 	private String username;
-	
 	@JsonProperty("email")
 	private String email;
-	
 	@JsonProperty("phone")
 	private String phone;
-	
 	@JsonProperty("nickName")
 	private String nickName;
-	
 	@JsonProperty("level")
 	private Double level;
-	
 	@JsonProperty("floders")
+	@JsonIgnore
 	@OneToMany(mappedBy="user")
 	private List<Floder> floders = new ArrayList<Floder>();
-	
 	@JsonProperty("credit")
+	@JsonIgnore
 	@OneToMany(mappedBy="user")
 	private List<Credit> credit = new ArrayList<Credit>(0);
 	
@@ -161,6 +157,7 @@ public class User implements Serializable{
 	 * @return The floders
 	 */
 	@JsonProperty("floders")
+	@JsonIgnore
 	public List<Floder> getFloders() {
 		return floders;
 	}
@@ -185,6 +182,7 @@ public class User implements Serializable{
 	 * @return The credit
 	 */
 	@JsonProperty("credit")
+	@JsonIgnore
 	public List<Credit> getCredits() {
 		return credit;
 	}
@@ -204,6 +202,7 @@ public class User implements Serializable{
 		return this;
 	}
 
+	@JsonProperty("phone")
 	public String getPhone() {
 		return phone;
 	}
@@ -212,6 +211,7 @@ public class User implements Serializable{
 		this.phone = phone;
 	}
 
+	@JsonProperty("nickName")
 	public String getNickName() {
 		return nickName;
 	}
@@ -220,6 +220,8 @@ public class User implements Serializable{
 		this.nickName = nickName;
 	}
 
+	@JsonIgnore
+	@JsonProperty("credit")
 	public List<Credit> getCredit() {
 		return credit;
 	}

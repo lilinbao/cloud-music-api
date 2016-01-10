@@ -4,6 +4,7 @@ package com.linbao.api.resource;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.DefaultValue;
@@ -18,9 +19,13 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.linbao.api.model.Art;
 import com.linbao.api.model.Music;
 import com.linbao.api.model.support.ResponseWrapper;
+import com.linbao.api.service.IMusicService;
 
 /**
  * Resource interface of Music
@@ -29,6 +34,9 @@ import com.linbao.api.model.support.ResponseWrapper;
 @Path("musics")
 public class MusicsResource {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(MusicsResource.class);
+	@Inject
+	private IMusicService musicService;
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("{id}")
@@ -85,7 +93,7 @@ public class MusicsResource {
 	 */
 	@DELETE
 	@Produces({ "application/json" })
-	Response deleteMusics(@QueryParam("id") String id) throws Exception{
+	public Response deleteMusics(@QueryParam("id") String id) throws Exception{
 		return ResponseWrapper.ok().build();
 	}
 
@@ -111,7 +119,7 @@ public class MusicsResource {
 	@GET
 	@Path("list")
 	@Produces({ "application/json" })
-	Response getMusicsList(@QueryParam("page") @DefaultValue("1") long page,
+	public Response getMusicsList(@QueryParam("page") @DefaultValue("1") long page,
 			@QueryParam("limit") @DefaultValue("10") long limit) throws Exception{
 		List<Music> list = new ArrayList<Music>();
 		return ResponseWrapper.withJsonOK(list);
@@ -186,8 +194,17 @@ public class MusicsResource {
 	@GET
 	@Path("{style:s\\d?}")
 	@Produces({ "application/json" })
-	Response getMusicsByStyleSD(@PathParam("style") String style) throws Exception{
+	public Response getMusicsByStyleSD(@PathParam("style") String style) throws Exception{
 		List<Music> list = new ArrayList<Music>();
 		return ResponseWrapper.withJsonOK(list);
 	}
+
+	public IMusicService getMusicService() {
+		return musicService;
+	}
+
+	public void setMusicService(IMusicService musicService) {
+		this.musicService = musicService;
+	}
+	
 }

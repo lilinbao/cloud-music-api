@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
@@ -34,21 +35,17 @@ public class Music implements Serializable {
 	@Id
 	@GeneratedValue
 	private Integer id;
-	 
 	@JsonProperty("title")
 	private String title;
-	 
 	@JsonProperty("year")
 	private String year;
-	 
 	@JsonProperty("quantity")
 	private Integer quantity;
-	 
 	@JsonProperty("location")
 	private String location;
-	
 	@JsonProperty("art")
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name="musics")
 	private Art art;
 

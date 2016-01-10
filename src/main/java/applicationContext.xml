@@ -20,13 +20,20 @@
 	<tx:annotation-driven />
 	<context:annotation-config />
 	<context:component-scan base-package="com.linbao.api"></context:component-scan>
-	<!-- 读取资源文件 -->
-
-	<context:property-placeholder location="classpath:application-context.properties" />
-	<!-- 加载其他模块配置文件 -->
+	<!-- 读取资源文件 
+	<context:property-placeholder location="classpath:application-context.properties" />-->
+	<bean id="propertyConfiger" class="com.linbao.api.model.support.LinbaoPropertyPlaceholderConfiger">
+		<property name="locations">
+			<list>
+				<value>classpath:application-context.properties</value>
+			</list>
+		</property>
+	</bean>
+	<!-- 加载其他模块配置文件
 	<import resource="classpath:config/applicationContext-dao.xml" />
 	<import resource="classpath:config/applicationContext-service.xml" />
 	<import resource="classpath:config/applicationContext-logging.xml" />
+	<import resource="classpath:config/applicationContext-resource.xml" /> -->
 
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">

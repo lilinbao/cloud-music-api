@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
@@ -34,21 +35,13 @@ public class Floder implements Serializable{
 	@Id
 	@GeneratedValue
 	private Integer id;
-	/**
-	 * 
-	 * (Required)
-	 * 
-	 */
 	@JsonProperty("displayName")
 	private String displayName;
-	/**
-	 * 
-	 */
 	@JsonProperty("path")
 	private String path;
-	
 	@JsonProperty("user")
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name="user_id")
 	private User user;
 	/**
