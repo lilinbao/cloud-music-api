@@ -12,6 +12,6 @@ Jersey RESTful Web Service + Spring 4.X + Hibernate 5.x.final + Mysql
  - end
 
 ##Issue or Concern
-**Contact me at [here](https://github.com/linbao-lee/cloud-music-api/issues) or send me an with any one of below email addresses:**
+**Contact me at [here](https://github.com/linbao-lee/cloud-music-api/issues) or send me an email with any one of below addresses:**
 - linbaolee@gmail.com
 - linbao.lee@foxmail.com
