@@ -13,12 +13,15 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.codehaus.jackson.annotate.JsonManagedReference;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 @Generated("org.jsonschema2pojo")
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
 @JsonPropertyOrder({ "id", "name", "sex", "type", "birthday", "company" })
 @Table(name = "tb_art")
 @Entity
@@ -41,7 +44,7 @@ public class Art implements Serializable {
 	@JsonProperty("company")
 	private String company;
 	@OneToMany(mappedBy = "art")
-	@JsonIgnore
+	@JsonManagedReference
 	private List<Music> musics = new ArrayList<Music>(0);
 
 	/**

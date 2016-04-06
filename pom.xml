@@ -1,91 +1,87 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-    <modelVersion>4.0.0</modelVersion>
+	<modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.linbao.bes.api</groupId>
-    <artifactId>cloud-music-api</artifactId>
-    <packaging>war</packaging>
-    <version>1.0-SNAPSHOT</version>
-    <name>cloud-music-api</name>
+	<groupId>com.linbao.bes.api</groupId>
+	<artifactId>cloud-music-api</artifactId>
+	<packaging>war</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>cloud-music-api</name>
 
-    <build>
-        <finalName>cloud-music-api</finalName>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.5.1</version>
-                <inherited>true</inherited>
-                <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
-                </configuration>
-            </plugin>
-            <plugin>
-	            <groupId>org.eclipse.jetty</groupId>
-	            <artifactId>jetty-maven-plugin</artifactId>
-	            <version>9.1.0.RC0</version>
-	            <executions>
-	            	<execution>
-	            		<id>start-jetty</id>
-	            		<phase>pre-integration-test</phase>
-	            		<goals>
-	            			<goal>run</goal>
-	            		</goals>
-	            	</execution>
-	            	<execution>
-	            		<id>stop-jetty</id>
-	            		<phase>post-integration-test</phase>
-	            		<goals>
-	            			<goal>stop</goal>
-	            		</goals>
-	            	</execution>
-	            </executions>
-            </plugin>
-        </plugins>
-    </build>
+	<build>
+		<finalName>cloud-music-api</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.5.1</version>
+				<inherited>true</inherited>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>9.1.0.RC0</version>
+				<executions>
+					<execution>
+						<id>start-jetty</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>stop-jetty</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>stop</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.glassfish.jersey</groupId>
-                <artifactId>jersey-bom</artifactId>
-                <version>${jersey.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.glassfish.jersey</groupId>
+				<artifactId>jersey-bom</artifactId>
+				<version>${jersey.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
-    <dependencies>
-	    <dependency>
+	<dependencies>
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.11</version>
 		</dependency>
-        <dependency>
-            <groupId>org.glassfish.jersey.containers</groupId>
-            <artifactId>jersey-container-servlet-core</artifactId>
-            <!-- use the following artifactId if you don't need servlet 2.x compatibility -->
-            <!-- artifactId>jersey-container-servlet</artifactId -->
-        </dependency>
-        <dependency>
-        	<groupId>org.glassfish.jersey.ext</groupId>
+		<dependency>
+			<groupId>org.glassfish.jersey.containers</groupId>
+			<artifactId>jersey-container-servlet-core</artifactId>
+			<!-- use the following artifactId if you don't need servlet 2.x compatibility -->
+			<!-- artifactId>jersey-container-servlet</artifactId -->
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.ext</groupId>
 			<artifactId>jersey-spring3</artifactId>
-			</dependency>
-        <!-- uncomment this to get JSON support
-        <dependency>
-            <groupId>org.glassfish.jersey.media</groupId>
-            <artifactId>jersey-media-moxy</artifactId>
-        </dependency>
-        -->
-        <dependency>
+		</dependency>
+		<!-- uncomment this to get JSON support <dependency> <groupId>org.glassfish.jersey.media</groupId> 
+			<artifactId>jersey-media-moxy</artifactId> </dependency> -->
+		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<version>2.5</version>
 		</dependency>
-        <dependency>
+		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-core-asl</artifactId>
 			<version>1.9.4</version>
@@ -106,11 +102,11 @@
 			<version>1.9.13</version>
 		</dependency>
 		<dependency>
-	       <groupId>org.codehaus.jackson</groupId>
-	       <artifactId>jackson-mapper-asl</artifactId>
-	       <version>1.9.11</version>
-    	</dependency>
-    	<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.11</version>
+		</dependency>
+		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${hibernate.version}</version>
@@ -157,6 +153,12 @@
 			<version>${aspectj.version}</version>
 			<scope>runtime</scope>
 		</dependency>
+		<!-- spring security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
 		<!-- connection pool -->
 		<dependency>
 			<groupId>org.apache.tomcat</groupId>
@@ -179,16 +181,16 @@
 			<version>${commons-lang3.version}</version>
 		</dependency>
 		<dependency>
- 		    <groupId>commons-fileupload</groupId>
- 		    <artifactId>commons-fileupload</artifactId>
- 		    <version>1.3.1</version>
- 		</dependency>
- 		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.3.1</version>
+		</dependency>
+		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>${slf4j.version}</version>
 		</dependency>
- 		<!-- 代码直接调用log4j会被桥接到slf4j -->
+		<!-- 代码直接调用log4j会被桥接到slf4j -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>log4j-over-slf4j</artifactId>
@@ -216,9 +218,9 @@
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
-		    <groupId>org.codehaus.janino</groupId>
-		    <artifactId>janino</artifactId>
-		    <version>2.6.1</version>
+			<groupId>org.codehaus.janino</groupId>
+			<artifactId>janino</artifactId>
+			<version>2.6.1</version>
 		</dependency>
 		<!-- LOGGING end -->
 		<dependency>
@@ -227,12 +229,13 @@
 			<version>1.9.5</version>
 			<scope>test</scope>
 		</dependency>
-		
-    </dependencies>
-    <properties>
-     	<!-- 主要依赖库的版本定义 -->
-        <jersey.version>2.22.1</jersey.version>
+
+	</dependencies>
+	<properties>
+		<!-- 主要依赖库的版本定义 -->
+		<jersey.version>2.22.1</jersey.version>
 		<spring.version>4.2.3.RELEASE</spring.version>
+		<spring.security.version>4.0.4.RELEASE</spring.security.version>
 		<struts.version>2.3.24</struts.version>
 		<hibernate.version>4.3.5.Final</hibernate.version>
 		<spring-data-jpa.version>1.6.0.RELEASE</spring-data-jpa.version>
@@ -253,19 +256,21 @@
 		<jetty.version>7.6.15.v20140411</jetty.version>
 		<h2.version>1.3.176</h2.version>
 		<!-- 项目属性 -->
-		<!--
-		<jdbc.driver.groupId>com.h2database</jdbc.driver.groupId>
-		<jdbc.driver.artifactId>h2</jdbc.driver.artifactId>
-		<jdbc.driver.version>${h2.version}</jdbc.driver.version>-->
-		
+		<!-- <jdbc.driver.groupId>com.h2database</jdbc.driver.groupId> <jdbc.driver.artifactId>h2</jdbc.driver.artifactId> 
+			<jdbc.driver.version>${h2.version}</jdbc.driver.version> -->
+
 		<jdbc.driver.groupId>mysql</jdbc.driver.groupId>
 		<jdbc.driver.artifactId>mysql-connector-java</jdbc.driver.artifactId>
 		<jdbc.driver.version>5.1.22</jdbc.driver.version>
-		<!-- 添加oracle jdbc driver   
-		<jdbc.driver.groupId>com.oracle</jdbc.driver.groupId>
-		<jdbc.driver.artifactId>ojdbc6</jdbc.driver.artifactId>
-		<jdbc.driver.version>11.2.0.4</jdbc.driver.version>	-->
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-    
+		<!-- 添加oracle jdbc driver <jdbc.driver.groupId>com.oracle</jdbc.driver.groupId> 
+			<jdbc.driver.artifactId>ojdbc6</jdbc.driver.artifactId> <jdbc.driver.version>11.2.0.4</jdbc.driver.version> -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<parent>
+		<groupId>com.linbao</groupId>
+		<artifactId>cloud-music</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../cloud-music/pom.xml</relativePath>
+	</parent>
 </project>

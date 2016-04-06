@@ -7,12 +7,13 @@ import java.util.List;
 
 import javax.annotation.Generated;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonManagedReference;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
@@ -48,12 +49,12 @@ public class User implements Serializable{
 	@JsonProperty("level")
 	private Double level;
 	@JsonProperty("floders")
-	@JsonIgnore
-	@OneToMany(mappedBy="user")
+	@JsonManagedReference
+	@OneToMany(mappedBy="user",fetch=FetchType.EAGER)
 	private List<Floder> floders = new ArrayList<Floder>();
 	@JsonProperty("credit")
-	@JsonIgnore
-	@OneToMany(mappedBy="user")
+	@JsonManagedReference
+	@OneToMany(mappedBy="user", fetch=FetchType.EAGER)
 	private List<Credit> credit = new ArrayList<Credit>(0);
 	
 	/**
@@ -157,7 +158,6 @@ public class User implements Serializable{
 	 * @return The floders
 	 */
 	@JsonProperty("floders")
-	@JsonIgnore
 	public List<Floder> getFloders() {
 		return floders;
 	}
@@ -174,31 +174,6 @@ public class User implements Serializable{
 
 	public User withFloders(List<Floder> floders) {
 		this.floders = floders;
-		return this;
-	}
-
-	/**
-	 * 
-	 * @return The credit
-	 */
-	@JsonProperty("credit")
-	@JsonIgnore
-	public List<Credit> getCredits() {
-		return credit;
-	}
-
-	/**
-	 * 
-	 * @param credit
-	 *            The credit
-	 */
-	@JsonProperty("credit")
-	public void setCredits(List<Credit> credit) {
-		this.credit = credit;
-	}
-
-	public User withCredits(List<Credit> credit) {
-		this.credit = credit;
 		return this;
 	}
 
@@ -220,7 +195,6 @@ public class User implements Serializable{
 		this.nickName = nickName;
 	}
 
-	@JsonIgnore
 	@JsonProperty("credit")
 	public List<Credit> getCredit() {
 		return credit;

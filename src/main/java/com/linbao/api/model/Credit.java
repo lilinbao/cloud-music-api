@@ -14,13 +14,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonBackReference;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 @Generated("org.jsonschema2pojo")
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
 @JsonPropertyOrder({ "id", "name", "creditAmount", "createTime", "effectedTime", "endTime" })
 @Table(name = "tb_credit")
 @Entity
@@ -43,7 +45,7 @@ public class Credit implements Serializable {
 	@JsonProperty("endTime")
 	private Date endTime;
 	@ManyToOne(cascade={CascadeType.MERGE})
-	@JsonIgnore
+	@JsonBackReference
 	@JoinColumn(name="user_id")
 	private User user;
 

@@ -20,6 +20,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -86,9 +87,12 @@ public class UsersResource {
 	@GET
 	public Response getUsers(@QueryParam("id") String id) throws Exception{
 		LOGGER.info("the id from parameter is {}",id);
-		int userId = Integer.valueOf(id);
-		User u = userService.getById(userId);
-		return ResponseWrapper.withJsonOK(u);
+		if(StringUtils.isNotBlank(id)){
+			int userId = Integer.valueOf(id);
+			User u = userService.getById(userId);
+			return ResponseWrapper.withJsonOK(u);
+		}
+		return ResponseWrapper.noContent().build();
 	}
 
 	/**
